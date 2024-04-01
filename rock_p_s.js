@@ -11,10 +11,6 @@ function getComputerChoice() {
     return computerOptions[randomIndex];
 }
 
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === "Rock" && computerSelection === "Paper") {
         return "You Lose! Paper beats Rock";
@@ -44,6 +40,6 @@ function playRound(playerSelection, computerSelection) {
         }
 }
 
-const playerSelection = "rock";
+const playerSelection = "Rock";
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
