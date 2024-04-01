@@ -43,42 +43,7 @@ function playRound(playerSelection, computerSelection) {
             return "It's a tie! You both suck";
         }
 }
-    
-    
-    
-    
-    const playerOptRock = "Rock";
-    const playerOptPaper = "Paper";
-    const playerOptScissors = "Scissors";
 
-    
-    
-    
-    if (playerSelection === computerSelection) {
-        return "It's a tie! You both suck";
-    if (playerSelection)
-    }
-}
-
-
-
-const resultPaperW = "You Lose! Paper beats Rock"
-const resultRockW = "You Lose! Rock beats Scissors"
-const resultScissorsW = "You Lose! Scissors beats Paper"
-const resultDraw = "It's a tie! You both suck"
-
-    
-    
-    
-    if (playerSelection === computerSelection) {
-        return "It's a tie! You both suck";
-    if (playerSelection)
-    }
-}
-
-
-
-const resultPaperW = "You Lose! Paper beats Rock"
-const resultRockW = "You Lose! Rock beats Scissors"
-const resultScissorsW = "You Lose! Scissors beats Paper"
-const resultDraw = "It's a tie! You both suck"
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
