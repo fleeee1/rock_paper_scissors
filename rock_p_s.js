@@ -4,7 +4,7 @@ function getComputerChoice() {
     return computerOptions[randomIndex];
 }
 
-function playRound(playerSelection, computerSelection) {
+    function playRound(playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "Paper") {
         return "You Lose! Paper beats Rock";
     }   
