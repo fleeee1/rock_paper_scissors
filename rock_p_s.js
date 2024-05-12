@@ -1,3 +1,8 @@
+const rockButton = document.querySelector(".rock")
+const paperButton = document.querySelector(".paper")
+const scissorsButton = document.querySelector(".scissors")
+
+
 function getComputerChoice() {
     const computerOptions = ["Rock", "Paper", "Scissors"];
     const randomIndex = Math.floor(Math.random() * computerOptions.length);
