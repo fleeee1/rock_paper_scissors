@@ -1,7 +1,18 @@
-const rockButton = document.querySelector(".rock")
-const paperButton = document.querySelector(".paper")
-const scissorsButton = document.querySelector(".scissors")
+// Declare variables to keep track of scores
+let playerScore = 0;
+let computerScore = 0;
 
+const rockButton = document.querySelector(".rock");
+const paperButton = document.querySelector(".paper");
+const scissorsButton = document.querySelector(".scissors");
+const resultsDiv = document.querySelector('.results');
+
+function displayResult(result) {
+    console.log("Result: " + result);
+    const resultParagraph = document.createElement('p');
+    resultParagraph.textContent = result + " Player: " + playerScore + " - Computer: " + computerScore;
+    resultsDiv.appendChild(resultParagraph);
+}
 
 function getComputerChoice() {
     const computerOptions = ["Rock", "Paper", "Scissors"];
@@ -9,45 +20,72 @@ function getComputerChoice() {
     return computerOptions[randomIndex];
 }
 
-    function playRound(playerSelection, computerSelection) {
-    if (playerSelection === "rock" && computerSelection === "Paper") {
-        return "You Lose! Paper beats Rock";
-    }   
-
-    if (playerSelection === "paper" && computerSelection === "Rock") {
-        return "You Win! Paper beats Rock";
-    }
-
-    if (playerSelection === "rock" && computerSelection === "Scissors") {
-        return "You Win! Rock beats Scissors";
-    }
-
-    if (playerSelection === "scissors" && computerSelection === "Rock") {
-        return "You lose! Rock beats Scissors";
-    }
-
-    if (playerSelection === "paper" && computerSelection === "Scissors") {
-        return "You lose! Scissors beats Paper";
-    }
-
-    if (playerSelection === "scissors" && computerSelection === "Paper") {
-        return "You win! Scissors beats Paper";
-    }
-    else {
-        return "It's a tie! You both suck";
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === "rock") {
+        if (computerSelection === "Paper") {
+            return "You Lose! Paper beats Rock";
+        } else if (computerSelection === "Scissors") {
+            return "You Win! Rock beats Scissors";
+        } else {
+            return "It's a tie! You both suck";
+        }
+    } else if (playerSelection === "paper") {
+        if (computerSelection === "Rock") {
+            return "You Win! Paper beats Rock";
+        } else if (computerSelection === "Scissors") {
+            return "You Lose! Scissors beats Paper";
+        } else {
+            return "It's a tie! You both suck";
+        }
+    } else if (playerSelection === "scissors") {
+        if (computerSelection === "Rock") {
+            return "You Lose! Rock beats Scissors";
+        } else if (computerSelection === "Paper") {
+            return "You Win! Scissors beats Paper";
+        } else {
+            return "It's a tie! You both suck";
+        }
     }
 }
 
-function playGame() {
-    let playerSelection = prompt("Choose your weapon: Rock, Paper, or Scissors").toLowerCase();
-    
-    if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
-        alert("Invalid choice! Please choose again.");
-        return;
-    }
-
+function handleButtonClick(playerSelection) {
+    console.log("Button clicked: " + playerSelection);
     const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+    const result = playRound(playerSelection, computerSelection);
+
+
+    if (result.includes("Win")) {
+        playerScore++;
+    } else if (result.includes("Lose")) {
+        computerScore++;
+    }
+
+displayResult(result);
+
+    if (playerScore === 5) {
+        resetGame();
+        alert("Congratulations! You win the game!");
+        
+    } else if (computerScore === 5) {
+        resetGame();
+        alert("Sorry, you lose the game!");
+        
+    }
 }
 
-playGame();
+rockButton.addEventListener('click', function () {
+    handleButtonClick('rock');
+});
+
+paperButton.addEventListener('click', function () {
+    handleButtonClick('paper');
+});
+
+scissorsButton.addEventListener('click', function () {
+    handleButtonClick('scissors');
+});
+
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+}
